@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<link rel="stylesheet" type="text/css" href="$link.contextPath/resources/css/pager.css" />
+  	<script type="type/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  	<script type="type/JavaScript" src="#springUrl("/resources/js/application.js")"></script>
+    <title>Title</title>
+  </head>
+  <body>
+  	<div>
+  		TEST2
+  	</div>
+  	<div>
+  	$screen_content
+  	</div>
+  </body>
+</html>

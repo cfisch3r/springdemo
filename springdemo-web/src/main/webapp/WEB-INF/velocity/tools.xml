@@ -1,0 +1,7 @@
+<tools>
+	<toolbox scope="request">
+		<tool class="org.apache.velocity.tools.view.LinkTool" forceRelative="true" includeRequestParams="true"/>
+		<tool class="org.apache.velocity.tools.generic.MathTool" forceRelative="true" includeRequestParams="true"/>
+		<tool class="org.apache.velocity.tools.view.PagerTool" forceRelative="true" includeRequestParams="true"/>
+	</toolbox>
+</tools>

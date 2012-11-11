@@ -1,0 +1,36 @@
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+	<table name="Book">
+		<column>title</column>
+		<row>
+			<value>Test 1</value>
+		</row>
+		<row>
+			<value>Test 2</value>
+		</row>
+		<row>
+			<value>Test 3</value>
+		</row>
+		<row>
+			<value>Test 4</value>
+		</row>
+		<row>
+			<value>Test 5</value>
+		</row>
+		<row>
+			<value>Test 6</value>
+		</row>
+		<row>
+			<value>Test 7</value>
+		</row>
+		<row>
+			<value>Test 8</value>
+		</row>
+		<row>
+			<value>Test 9</value>
+		</row>
+		<row>
+			<value>Test 10</value>
+		</row>
+	</table>
+</dataset>

@@ -1,0 +1,26 @@
+#macro (pager $pageCount $currentPageIndex $pageSize)
+
+#if ($pageCount > 0)
+
+	<ul id="pagination-flickr">
+		
+		#if ($currentPageIndex > 0)
+			<li class="previous"><a href="$link.baseRef?pageNumber=$math.add($currentPageIndex, -1)&pageSize=$pageSize">Previous</a></li>
+		#else
+			<li class="previous-off">Previous</li>
+		#end
+		
+		#foreach( $pageNumber in [1..$pageCount] )
+  			<li #if ($pageNumber == ($currentPageIndex + 1)) class="active" #end ><a href="$link.baseRef?pageNumber=$math.add($pageNumber, -1)&pageSize=$pageSize">$pageNumber</a></li>
+		#end  			
+
+		#if ($currentPageIndex < ($pageCount - 1))
+			<li class="next"><a href="$link.baseRef?pageNumber=$math.add($currentPageIndex, 1)&pageSize=$pageSize">Next</a></li>		
+		#else
+			<li class="next-off">Next</li>	
+		#end
+	</ul>
+
+#end
+
+#end

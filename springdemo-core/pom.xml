@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.fisch3r</groupId>
+		<artifactId>springdemo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>springdemo-core</artifactId>
+	<packaging>jar</packaging>
+	<name>springdemo core application</name>
+	<dependencies>
+
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+		
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.8.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>springdemo-core</finalName>
+		<plugins>
+			<!-- Hibernate plugin for database setup -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<implementation>annotationconfiguration</implementation>
+						</component>
+						<component>
+							<name>hbm2hbmxml</name>
+							<outputDirectory>src/main/resources</outputDirectory>
+						</component>
+					</components>
+					<componentProperties>
+						<drop>true</drop>
+						<configurationfile>/src/main/resources/hibernate.cfg.xml</configurationfile>
+						<outputfilename>schema.ddl</outputfilename>
+					</componentProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- sql plugin for schema import -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.5</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<driver>${db.driver}</driver>
+					<url>${db.url}</url>
+					<username>${db.username}</username>
+					<password>${db.password}</password>
+					<autocommit>true</autocommit>
+					<srcFiles>
+						<srcFile>target/hibernate3/sql/schema.ddl</srcFile>
+					</srcFiles>
+				</configuration>
+			</plugin>
+			<!-- dbunit plugin for test data import -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dbunit-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.5</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>operation</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dataTypeFactoryName>
+					<url>${db.url}</url>
+					<driver>${db.driver}</driver>
+					<username>${db.username}</username>
+					<password>${db.password}</password>
+					<type>CLEAN_INSERT</type>
+					<src>src/test/data/stub.xml</src>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<description>Erster Test für eine Spring Webapp</description>
+	
+</project>

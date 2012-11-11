@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.fisch3r</groupId>
+		<artifactId>springdemo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>springdemo-web</artifactId>
+	<packaging>war</packaging>
+	<name>springdemo web application</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- core application -->
+		<dependency>
+			<groupId>de.fisch3r</groupId>
+			<artifactId>springdemo-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+		<!-- core taglib -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<scope>runtime</scope>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>c</artifactId>
+			<version>1.1.2</version>
+			<scope>runtime</scope>
+			<type>tld</type>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>fmt</artifactId>
+			<version>1.1.2</version>
+			<scope>runtime</scope>
+			<type>tld</type>
+		</dependency>
+
+		<!-- Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<!-- servlet API for extending view classes -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>springdemo</finalName>
+		<!-- Jetty for test runs -->
+		<plugins>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.10</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<stopKey>STOP</stopKey>
+					<stopPort>9999</stopPort>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<description>Erster Test für eine Spring Webapp</description>
+
+</project>

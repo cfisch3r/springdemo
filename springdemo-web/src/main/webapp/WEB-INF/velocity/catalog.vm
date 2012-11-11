@@ -1,0 +1,9 @@
+#parse( "components/pager.vm" )
+#set ($pageSize = 5)
+  		<ul class="list">
+		  	#foreach( $book in $result.entries )
+		    <li>Title: $book.title</li>
+			#end
+  		</ul>
+
+#pager($result.pageCount $result.pageNumber $pageSize)
