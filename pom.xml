@@ -40,17 +40,17 @@
 			<dependency>
 				<groupId>org.apache.myfaces.core</groupId>
 				<artifactId>myfaces-api</artifactId>
-				<version>2.1.9</version>
+				<version>${jsf.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.myfaces.core</groupId>
 				<artifactId>myfaces-impl</artifactId>
-				<version>2.1.9</version>
+				<version>${jsf.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.primefaces</groupId>
 				<artifactId>primefaces</artifactId>
-				<version>3.4.1</version>
+				<version>${primefaces.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -148,7 +148,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
-		<spring.version>3.1.0.RELEASE</spring.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
+		<jsf.version>2.1.9</jsf.version>
+		<primefaces.version>3.4.1</primefaces.version>
 		<db.url>jdbc:mysql://localhost/springdemo</db.url>
 		<db.username>root</db.username>
 		<db.password></db.password>

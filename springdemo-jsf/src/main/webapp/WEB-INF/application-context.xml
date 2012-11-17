@@ -10,30 +10,10 @@
         http://www.springframework.org/schema/faces
         http://www.springframework.org/schema/faces/spring-faces-2.2.xsd">
 
-	<!-- Executes flows: the central entry point into the Spring Web Flow system -->
-	<webflow:flow-executor id="flowExecutor">
-		<webflow:flow-execution-listeners>
-			<webflow:listener ref="facesContextListener" />
-		</webflow:flow-execution-listeners>
-	</webflow:flow-executor>
+	<bean id="tableBean" class="de.fisch3r.springdemo.jsf.view.TableBean"
+		scope="flow" />
 
-	<!-- The registry of executable flow definitions -->
-	<webflow:flow-registry id="flowRegistry"
-		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
-		<webflow:flow-location-pattern value="**/*-flow.xml" />
-	</webflow:flow-registry>
-
-	<!-- Configures the Spring Web Flow JSF integration -->
-	<faces:flow-builder-services id="flowBuilderServices" />
-
-	<!-- A listener maintain one FacesContext instance per Web Flow request. -->
-	<bean id="facesContextListener"
-		class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener" />
-
-	<!-- JSF2 Spring MVC Integration -->
-	<faces:resources />
-	<bean class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
-		<property name="flowExecutor" ref="flowExecutor" />
-	</bean>
+	<import resource="webflow-config.xml" />
+	<import resource="webmvc-config.xml" />
 
 </beans>
