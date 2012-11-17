@@ -16,9 +16,10 @@ package de.fisch3r.springdemo.jsf.domain;
  * limitations under the License.
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Car {
+public class Car implements Serializable {
 
 	private String model;
 	private int year;
