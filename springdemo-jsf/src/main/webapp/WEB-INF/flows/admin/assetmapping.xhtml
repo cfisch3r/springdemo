@@ -5,31 +5,28 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:form>
 
-		<p:sheet value="#{assetMappings}" var="assetMapping"
-			scrollHeight="300">
-			<f:facet name="caption">
-            Asset Mappings
-        </f:facet>
+	<h:form id="sheetForm">
+		<p:panel id="sheet">
+			<p:sheet value="#{assetMappings}" var="assetMapping"
+				scrollHeight="300">
+				<f:facet name="caption">
+            		Asset Mappings
+        		</f:facet>
 
-			<p:column headerText="Dataprovider Name" width="125"
-				sortBy="#{assetMapping.dataProviderName}">
-				<h:inputText value="#{assetMapping.dataProviderName}" />
-			</p:column>
+				<p:column headerText="Dataprovider Name" width="125"
+					sortBy="#{assetMapping.dataProviderName}">
+					<h:inputText value="#{assetMapping.dataProviderName}" />
+				</p:column>
 
-			<p:column headerText="Decorative Name" width="125"
-				sortBy="#{assetMapping.decorativeName}">
-				<h:inputText value="#{assetMapping.decorativeName}"
-					onkeypress="return restrict(event)" />
-			</p:column>
-		</p:sheet>
-
-
-
+				<p:column headerText="Decorative Name" width="125"
+					sortBy="#{assetMapping.decorativeName}">
+					<h:inputText value="#{assetMapping.decorativeName}" />
+				</p:column>
+			</p:sheet>
+		</p:panel>
 	</h:form>
-
-
+	
 	<h:form id="newMapping">
 
 		<p:panel id="panel" header="New Mapping" style="margin-bottom:10px;">
@@ -49,9 +46,9 @@
 					label="Decorative Name" />
 				<p:message for="decorativeName" />
 			</h:panelGrid>
-			
-			<p:commandButton value="Add" update="panel" id="add"  
-             action="addNewAssetMapping" />  
+
+			<p:commandButton value="Add" update="panel,:sheetForm" id="add"
+				action="addNewAssetMapping" />
 		</p:panel>
 	</h:form>
 </h:body>
