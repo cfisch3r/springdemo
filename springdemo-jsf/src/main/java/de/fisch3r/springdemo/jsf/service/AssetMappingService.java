@@ -13,4 +13,8 @@ public class AssetMappingService {
 		return assetMappings;
 	}
 
+	public void setAssetMappings(List<AssetMapping> assetMappings) {
+		this.assetMappings = assetMappings;
+	}
+
 }
