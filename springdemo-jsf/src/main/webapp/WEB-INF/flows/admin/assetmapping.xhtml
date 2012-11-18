@@ -8,25 +8,44 @@
 
 	<h:form id="sheetForm">
 		<p:panel id="sheet">
-			<p:sheet value="#{assetMappings}" var="assetMapping"
-				scrollHeight="300">
-				<f:facet name="caption">
+			<p:dataTable var="assetMapping" value="#{assetMappings}" id="assetMappings"
+				editable="true">
+
+				<f:facet name="header">
             		Asset Mappings
         		</f:facet>
 
-				<p:column headerText="Dataprovider Name" width="125"
-					sortBy="#{assetMapping.dataProviderName}">
-					<h:inputText value="#{assetMapping.dataProviderName}" />
+				<p:column headerText="Dataprovider Name" style="width:250px">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{assetMapping.dataProviderName}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{assetMapping.dataProviderName}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Decorative Name" width="125"
-					sortBy="#{assetMapping.decorativeName}">
-					<h:inputText value="#{assetMapping.decorativeName}" />
+				<p:column headerText="Decorative Name" style="width:125px">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{assetMapping.decorativeName}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{assetMapping.decorativeName}" style="width:100%" label="Decorative Name" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
-			</p:sheet>
+
+				<p:column headerText="Options" style="width:50px">
+					<p:rowEditor />
+				</p:column>
+
+			</p:dataTable>
+
 		</p:panel>
 	</h:form>
-	
+
 	<h:form id="newMapping">
 
 		<p:panel id="panel" header="New Mapping" style="margin-bottom:10px;">
