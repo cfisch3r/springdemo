@@ -11,7 +11,7 @@
 	</on-start>
 	<view-state id="assetmapping">
 		<var name="newAssetMapping" class="de.fisch3r.springdemo.jsf.domain.AssetMapping" />
-		<transition on="addNewAssetMapping">
+		<transition on="addNewAssetMapping" to="assetmapping">
 			<evaluate expression="assetMappingService.addNewAssetMapping(newAssetMapping)" />
 			<evaluate expression="assetMappingService.fetchAssetMappings()"
 				result="flowScope.assetMappings" />
