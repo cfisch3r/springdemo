@@ -45,10 +45,13 @@
 
 				<h:outputLabel for="decorativeName" value="Decorative Name: *" />
 				<p:inputText id="decorativeName"
-					value="#{newAssetMappting.decorativeName}" required="true"
+					value="#{newAssetMapping.decorativeName}" required="true"
 					label="Decorative Name" />
 				<p:message for="decorativeName" />
 			</h:panelGrid>
+			
+			<p:commandButton value="Add" update="panel" id="add"  
+             action="addNewAssetMapping" />  
 		</p:panel>
 	</h:form>
 </h:body>

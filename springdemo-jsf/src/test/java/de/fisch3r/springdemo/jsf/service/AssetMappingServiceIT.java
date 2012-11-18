@@ -29,6 +29,16 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 		assertThat(assetMappings.size(), equalTo(newAssetMappings.size()));
 	}
 	
+	@Test
+	public void addNewAssetMappingShouldIncreaseMappingsSize() {
+		AssetMapping assetMapping = new AssetMapping("dummy", "Dummy");
+		final int oldSize = sut.fetchAssetMappings().size();
+		sut.addNewAssetMapping(assetMapping);
+		final int newSize = sut.fetchAssetMappings().size();
+		assertThat((newSize - oldSize), is(1));
+		
+	}
+	
 	private List<AssetMapping> createAssetMappings() {
 		List<AssetMapping> assetMappings = new ArrayList<AssetMapping>();
 		assetMappings.add(new AssetMapping("Oil","Öl"));
