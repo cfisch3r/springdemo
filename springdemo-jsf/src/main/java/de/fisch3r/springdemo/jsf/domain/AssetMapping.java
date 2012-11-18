@@ -8,8 +8,11 @@ public class AssetMapping implements Serializable {
 	private String decorativeName;
 
 
-	public AssetMapping(String dataProviderName, String decorativeName) {
+	private AssetMapping() {
 		super();
+	}
+
+	public AssetMapping(String dataProviderName, String decorativeName) {
 		this.dataProviderName = dataProviderName;
 		this.decorativeName = decorativeName;
 	}

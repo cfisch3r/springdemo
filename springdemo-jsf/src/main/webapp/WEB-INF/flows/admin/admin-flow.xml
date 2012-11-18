@@ -10,6 +10,7 @@
 			result="flowScope.assetMappings" />
 	</on-start>
 	<view-state id="assetmapping">
+		<var name="newAssetMapping" class="de.fisch3r.springdemo.jsf.domain.AssetMapping" />
 	</view-state>
 
 </flow>
