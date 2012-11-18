@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+
+		<p:sheet value="#{assetMappings}" var="assetMapping" scrollHeight="300">
+			<f:facet name="caption">
+            Asset Mappings
+        </f:facet>
+
+			<p:column headerText="Dataprovider Name" width="125" sortBy="#{assetMapping.dataProviderName}">
+				<h:inputText value="#{assetMapping.dataProviderName}" />
+			</p:column>
+
+			<p:column headerText="Decorative Name" width="125" sortBy="#{assetMapping.decorativeName}">
+				<h:inputText value="#{assetMapping.decorativeName}" onkeypress="return restrict(event)" />
+			</p:column>
+		</p:sheet>
+
+	</h:form>
+
+</h:body>
+</html>

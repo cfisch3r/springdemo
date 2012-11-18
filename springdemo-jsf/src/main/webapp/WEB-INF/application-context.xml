@@ -17,5 +17,6 @@
 
 	<import resource="webflow-config.xml" />
 	<import resource="webmvc-config.xml" />
+	<import resource="classpath:/spring/services.xml" />
 
 </beans>

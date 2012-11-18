@@ -5,5 +5,4 @@
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="assetMappingService" class="de.fisch3r.springdemo.jsf.service.AssetMappingService" />
-	<bean id="assetMappingController" class="de.fisch3r.springdemo.jsf.controller.AssetMappingController" />
 </beans>

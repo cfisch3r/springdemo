@@ -1,6 +1,8 @@
 package de.fisch3r.springdemo.jsf.domain;
 
-public class AssetMapping {
+import java.io.Serializable;
+
+public class AssetMapping implements Serializable {
 	private String dataProviderName;
 
 	private String decorativeName;
