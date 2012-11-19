@@ -25,8 +25,4 @@ public class AssetMappingService implements Serializable {
 		this.assetMappings = assetMappings;
 	}
 
-	public void addNewAssetMapping(AssetMapping assetMapping) {
-		assetMappings.add(assetMapping);
-	}
-
 }
