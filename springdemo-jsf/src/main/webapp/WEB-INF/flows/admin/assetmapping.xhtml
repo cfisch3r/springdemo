@@ -8,8 +8,9 @@
 
 	<h:form id="sheetForm">
 		<p:panel id="sheet">
-			<p:dataTable var="assetMapping" value="#{assetMappings}" id="assetMappings"
-				editable="true">
+			<p:dataTable var="assetMapping" value="#{assetMappings}"
+				id="assetMappings" editable="true"
+				rowKey="assetMapping.dataProviderName">
 
 				<f:facet name="header">
             		Asset Mappings
@@ -21,7 +22,8 @@
 							<h:outputText value="#{assetMapping.dataProviderName}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{assetMapping.dataProviderName}" style="width:100%" />
+							<p:inputText value="#{assetMapping.dataProviderName}"
+								style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
@@ -32,13 +34,19 @@
 							<h:outputText value="#{assetMapping.decorativeName}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{assetMapping.decorativeName}" style="width:100%" label="Decorative Name" />
+							<p:inputText value="#{assetMapping.decorativeName}"
+								style="width:100%" label="Decorative Name" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
 				<p:column headerText="Options" style="width:50px">
 					<p:rowEditor />
+					<p:commandButton value="X" update=":sheetForm" id="deleteRow"
+						action="removeAssetMapping">
+						<f:setPropertyActionListener target="#{assetMappingTableController.selectedAssetMapping}"
+							value="#{assetMapping}" />
+					</p:commandButton>
 				</p:column>
 
 			</p:dataTable>
