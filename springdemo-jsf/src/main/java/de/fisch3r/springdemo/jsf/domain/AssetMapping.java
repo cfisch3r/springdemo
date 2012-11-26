@@ -2,9 +2,14 @@ package de.fisch3r.springdemo.jsf.domain;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 public class AssetMapping implements Serializable {
+	
+	@NotNull
 	private String dataProviderName;
 
+	@NotNull
 	private String decorativeName;
 
 
