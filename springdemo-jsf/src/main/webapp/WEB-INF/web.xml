@@ -45,10 +45,11 @@
 	</context-param>
 
 	<!-- Uncomment this to disable partial state saving when using Apache MyFaces 
-		2 !! -->
+		2 !! 
 	<context-param>
 		<param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
 		<param-value>false</param-value>
 	</context-param>
+	-->
 
 </web-app>
