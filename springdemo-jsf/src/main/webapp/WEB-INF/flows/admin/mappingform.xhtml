@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+
+	<p:panel id="panel" header="Asset Mapping" style="margin-bottom:10px;">
+		<h:form id="mappingForm">
+			<h:panelGrid columns="3">
+				<h:outputLabel for="dataProviderName" value="Dataprovider Name: *" />
+				<p:inputText id="dataProviderName"
+					value="#{assetMapping.dataProviderName}" label="Data Provider Name">
+				</p:inputText>
+				<p:message for="dataProviderName" />
+
+				<h:outputLabel for="decorativeName" value="Decorative Name: *" />
+				<p:inputText id="decorativeName"
+					value="#{assetMapping.decorativeName}" label="Decorative Name" />
+				<p:message for="decorativeName" />
+			</h:panelGrid>
+
+			<p:commandButton value="Save" id="save" update=":panel"
+				action="saveAssetMapping" />
+		</h:form>
+		<h:form id="cancel">
+			<p:commandButton value="cancel" id="cancel" action="cancel" />
+		</h:form>
+	</p:panel>
+</h:body>
+</html>
