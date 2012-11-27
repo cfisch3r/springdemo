@@ -24,6 +24,27 @@
 			<evaluate
 				expression="assetMappingTableController.assetMappings.remove(assetMappingTableController.selectedAssetMapping)" />
 		</transition>
+
+		<transition on="editAssetMapping" to="editmapping" />
+
+		<transition on="createAssetMapping" to="createmapping" />
+	</view-state>
+
+	<view-state id="editmapping" view="mappingform.xhtml">
+		<on-render>
+			<evaluate expression="assetMappingTableController.getSelectedAssetMapping()"
+				result="flowScope.assetMapping" />
+		</on-render>
+		<transition on="saveAssetMapping" to="assetmapping" />
+		<transition on="cancel" to="assetmapping" />
+	</view-state>
+
+	<view-state id="createmapping" view="mappingform.xhtml">
+		<var name="assetMapping" class="de.fisch3r.springdemo.jsf.domain.AssetMapping" />
+		<transition on="saveAssetMapping" to="assetmapping" >
+			<evaluate
+				expression="assetMappingTableController.assetMappings.add(assetMapping)" />
+		</transition>
 	</view-state>
 
 </flow>

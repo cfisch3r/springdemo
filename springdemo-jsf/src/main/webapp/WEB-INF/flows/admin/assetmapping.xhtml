@@ -10,10 +10,12 @@
 		<p:growl id="growl" showDetail="true" sticky="true" />
 
 		<p:panel id="sheet">
-			<p:dataTable var="assetMapping"
+			<p:dataTable var="assetMappingRow"
 				value="#{assetMappingTableController.assetMappings}"
 				id="assetMappings" editable="true"
 				rowKey="assetMapping.dataProviderName" onRowEditUpdate="growl">
+
+				<p:ajax event="rowEdit" update=":sheetForm" />
 
 				<f:facet name="header">
             		Asset Mappings
@@ -22,11 +24,11 @@
 				<p:column headerText="Dataprovider Name" style="width:250px">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{assetMapping.dataProviderName}" />
+							<h:outputText value="#{assetMappingRow.dataProviderName}" />
 						</f:facet>
 						<f:facet name="input">
 							<p:inputText id="cellDataProviderName"
-								value="#{assetMapping.dataProviderName}" style="width:100%" />
+								value="#{assetMappingRow.dataProviderName}" style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
@@ -34,10 +36,10 @@
 				<p:column headerText="Decorative Name" style="width:125px">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{assetMapping.decorativeName}" />
+							<h:outputText value="#{assetMappingRow.decorativeName}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{assetMapping.decorativeName}"
+							<p:inputText value="#{assetMappingRow.decorativeName}"
 								style="width:100%" label="Decorative Name" />
 						</f:facet>
 					</p:cellEditor>
@@ -49,11 +51,19 @@
 						action="removeAssetMapping">
 						<f:setPropertyActionListener
 							target="#{assetMappingTableController.selectedAssetMapping}"
-							value="#{assetMapping}" />
+							value="#{assetMappingRow}" />
+					</p:commandButton>
+					<p:commandButton value="E" id="editRow" action="editAssetMapping">
+						<f:setPropertyActionListener
+							target="#{assetMappingTableController.selectedAssetMapping}"
+							value="#{assetMappingRow}" />
 					</p:commandButton>
 				</p:column>
 
 			</p:dataTable>
+
+			<p:commandButton value="Create" id="createBtn"
+				action="createAssetMapping" />
 
 		</p:panel>
 	</h:form>
