@@ -20,21 +20,9 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private AssetMappingService sut;
 	
-	@Test
-	public void fetchAssetMappingsShouldReturnList() {
-		List<AssetMapping> newAssetMappings = createAssetMappings();  
-		sut.setAssetMappings(newAssetMappings);
-		List<AssetMapping> assetMappings = sut.fetchAssetMappings();
-		assertThat(assetMappings, notNullValue());
-		assertThat(assetMappings.size(), equalTo(newAssetMappings.size()));
-	}
-	
-	private List<AssetMapping> createAssetMappings() {
-		List<AssetMapping> assetMappings = new ArrayList<AssetMapping>();
-		assetMappings.add(new AssetMapping("Oil","Öl"));
-		
-		return assetMappings;
-	}
-	
+	@Test(expectedExceptions=java.lang.RuntimeException.class)
+	public void settingNullAsAssetMappingsShouldThrowException() {
+		sut.setAssetMappings(null);
+	}	
 	
 }
