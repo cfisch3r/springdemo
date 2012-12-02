@@ -34,7 +34,7 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 	@Test(expectedExceptions=org.hibernate.validator.method.MethodConstraintViolationException.class)
 	public void setInvalidAssetMappingsShouldThrowException() {
 		List<AssetMapping> assetMappings = new ArrayList<AssetMapping>();
-		assetMappings.add(new AssetMapping(null, null));
+		assetMappings.add(new AssetMapping("", ""));
 		sut.setAssetMappings(assetMappings);
 	}
 	

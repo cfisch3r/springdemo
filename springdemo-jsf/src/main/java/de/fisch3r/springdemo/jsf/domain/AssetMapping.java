@@ -4,12 +4,16 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AssetMapping implements Serializable {
 	
 	@NotNull
+	@NotEmpty
 	private String dataProviderName;
 
 	@NotNull
+	@NotEmpty
 	private String decorativeName;
 
 
