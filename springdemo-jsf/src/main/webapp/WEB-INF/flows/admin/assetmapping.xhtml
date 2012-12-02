@@ -7,53 +7,33 @@
 <h:body>
 
 	<h:form id="sheetForm">
-		<p:growl id="growl" showDetail="true" sticky="true" />
 
 		<p:panel id="sheet">
 			<p:dataTable var="assetMappingRow"
 				value="#{assetMappingTableController.assetMappings}"
 				id="assetMappings" editable="true"
-				rowKey="assetMapping.dataProviderName" onRowEditUpdate="growl">
-
-				<p:ajax event="rowEdit" update=":sheetForm" />
+				rowKey="assetMapping.dataProviderName" >
 
 				<f:facet name="header">
             		Asset Mappings
         		</f:facet>
 
-				<p:column headerText="Dataprovider Name" style="width:250px">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{assetMappingRow.dataProviderName}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="cellDataProviderName"
-								value="#{assetMappingRow.dataProviderName}" style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="Dataprovider Name" style="width:250px" >
+					<h:outputText value="#{assetMappingRow.dataProviderName}" /> 
 				</p:column>
 
-				<p:column headerText="Decorative Name" style="width:125px">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{assetMappingRow.decorativeName}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{assetMappingRow.decorativeName}"
-								style="width:100%" label="Decorative Name" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="Decorative Name" style="width:125px" >
+					<h:outputText value="#{assetMappingRow.decorativeName}" /> 
 				</p:column>
 
 				<p:column headerText="Options" style="width:50px">
-					<p:rowEditor />
-					<p:commandButton value="X" update=":sheetForm" id="deleteRow"
-						action="removeAssetMapping">
+					<p:commandButton icon="ui-icon-pencil" title="Edit row" id="editRow" action="editAssetMapping">
 						<f:setPropertyActionListener
 							target="#{assetMappingTableController.selectedAssetMapping}"
 							value="#{assetMappingRow}" />
 					</p:commandButton>
-					<p:commandButton value="E" id="editRow" action="editAssetMapping">
+					<p:commandButton icon="ui-icon-trash" title="Delete row" update=":sheetForm" id="deleteRow"
+						action="removeAssetMapping">
 						<f:setPropertyActionListener
 							target="#{assetMappingTableController.selectedAssetMapping}"
 							value="#{assetMappingRow}" />
@@ -68,29 +48,5 @@
 		</p:panel>
 	</h:form>
 
-	<h:form id="newMapping">
-		<p:commandButton id="newMappingBtn" value="New Asset Mapping"
-			type="button" />
-
-		<p:overlayPanel id="panel" for="newMappingBtn" hideEffect="fade"
-			header="New Mapping" style="margin-bottom:10px;">
-			<h:panelGrid columns="3">
-				<h:outputLabel for="dataProviderName" value="Dataprovider Name: *" />
-				<p:inputText id="dataProviderName"
-					value="#{newAssetMapping.dataProviderName}"
-					label="Data Provider Name">
-				</p:inputText>
-				<p:message for="dataProviderName" />
-
-				<h:outputLabel for="decorativeName" value="Decorative Name: *" />
-				<p:inputText id="decorativeName"
-					value="#{newAssetMapping.decorativeName}" label="Decorative Name" />
-				<p:message for="decorativeName" />
-			</h:panelGrid>
-
-			<p:commandButton value="Add" update="panel,:sheetForm" id="add"
-				action="addNewAssetMapping" />
-		</p:overlayPanel>
-	</h:form>
 </h:body>
 </html>
