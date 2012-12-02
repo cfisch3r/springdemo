@@ -8,6 +8,4 @@
 		class="de.fisch3r.springdemo.jsf.service.SimpleAssetMappingService" />
 	<bean id="methodValidationPostProcessor"
 		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor" />
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 </beans>

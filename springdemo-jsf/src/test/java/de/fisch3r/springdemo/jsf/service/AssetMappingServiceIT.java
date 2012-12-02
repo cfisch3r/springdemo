@@ -19,6 +19,11 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 	
 	@Autowired
 	private AssetMappingService sut;
+
+	@Test
+	public void setValidAssetMappingThrowsNoException() {
+		sut.setAssetMappings(new ArrayList<AssetMapping>());		
+	}
 	
 	@Test(expectedExceptions=org.hibernate.validator.method.MethodConstraintViolationException.class)
 	public void settingNullAsAssetMappingsShouldThrowException() {
