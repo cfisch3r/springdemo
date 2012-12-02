@@ -3,6 +3,9 @@ package de.fisch3r.springdemo.jsf.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import de.fisch3r.springdemo.jsf.domain.AssetMapping;
 
 public class SimpleAssetMappingService implements AssetMappingService {
