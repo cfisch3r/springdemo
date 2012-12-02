@@ -27,7 +27,7 @@ public class AssetMappingServiceTest {
 	
 	@BeforeTest
 	public void setUp() {
-		sut = new AssetMappingService();
+		sut = new SimpleAssetMappingService();
 	}
 
 	
