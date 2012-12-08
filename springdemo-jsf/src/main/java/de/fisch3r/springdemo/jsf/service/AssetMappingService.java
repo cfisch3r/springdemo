@@ -1,6 +1,6 @@
 package de.fisch3r.springdemo.jsf.service;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -12,8 +12,8 @@ import de.fisch3r.springdemo.jsf.domain.AssetMapping;
 @Validated
 public interface AssetMappingService {
 
-	public abstract List<AssetMapping> fetchAssetMappings();
+	public abstract Set<AssetMapping> fetchAssetMappings();
 
-	public abstract void setAssetMappings(@NotNull @Valid List<AssetMapping> assetMappings);
+	public abstract void setAssetMappings(@NotNull @Valid Set<AssetMapping> assetMappings);
 
 }

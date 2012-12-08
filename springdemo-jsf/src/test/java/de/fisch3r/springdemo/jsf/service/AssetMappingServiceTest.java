@@ -5,7 +5,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -16,7 +18,7 @@ public class AssetMappingServiceTest {
 
 	private AssetMappingService sut;
 
-	private List<AssetMapping> testAssetMappings = new ArrayList<AssetMapping>() {
+	private Set<AssetMapping> testAssetMappings = new HashSet<AssetMapping>() {
 
 		private static final long serialVersionUID = -4195072058906938006L;
 
@@ -34,7 +36,7 @@ public class AssetMappingServiceTest {
 	@Test
 	public void fetchAssetMappingsShouldReturnList() {
 		sut.setAssetMappings(testAssetMappings);
-		List<AssetMapping> assetMappings = sut.fetchAssetMappings();
+		Set<AssetMapping> assetMappings = sut.fetchAssetMappings();
 		assertThat(assetMappings, notNullValue());
 		assertThat(assetMappings.size(), equalTo(testAssetMappings.size()));
 	}

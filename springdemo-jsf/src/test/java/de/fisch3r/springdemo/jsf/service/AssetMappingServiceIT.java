@@ -1,10 +1,7 @@
 package de.fisch3r.springdemo.jsf.service;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +19,7 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void setValidAssetMappingThrowsNoException() {
-		sut.setAssetMappings(new ArrayList<AssetMapping>());		
+		sut.setAssetMappings(new HashSet<AssetMapping>());		
 	}
 	
 	@Test(expectedExceptions=org.hibernate.validator.method.MethodConstraintViolationException.class)
@@ -33,7 +30,7 @@ public class AssetMappingServiceIT extends AbstractTestNGSpringContextTests {
 	
 	@Test(expectedExceptions=org.hibernate.validator.method.MethodConstraintViolationException.class)
 	public void setInvalidAssetMappingsShouldThrowException() {
-		List<AssetMapping> assetMappings = new ArrayList<AssetMapping>();
+		Set<AssetMapping> assetMappings = new HashSet<AssetMapping>();
 		assetMappings.add(new AssetMapping("", ""));
 		sut.setAssetMappings(assetMappings);
 	}
