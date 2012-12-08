@@ -6,10 +6,14 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.openpojo.business.BusinessIdentity;
+import com.openpojo.business.annotation.BusinessKey;
+
 public class AssetMapping implements Serializable {
 	
 	@NotNull
 	@NotEmpty
+	@BusinessKey
 	private String dataProviderName;
 
 	@NotNull
@@ -41,4 +45,20 @@ public class AssetMapping implements Serializable {
 	public void setDataProviderName(String dataProviderName) {
 		this.dataProviderName = dataProviderName;
 	}
+	
+    @Override
+    public boolean equals(Object obj) {
+        return BusinessIdentity.areEqual(this, obj);
+
+    }
+    
+    @Override
+    public int hashCode() {
+        return BusinessIdentity.getHashCode(this);
+    }
+    
+    @Override
+    public String toString() {
+        return BusinessIdentity.toString(this);
+    }
 }
