@@ -28,6 +28,13 @@
 		<transition on="editAssetMapping" to="editmapping" />
 
 		<transition on="createAssetMapping" to="createmapping" />
+
+		<transition on="saveAssetMappings" to="assetmapping">
+			<evaluate
+				expression="assetMappingService.setAssetMappings(assetMappingTableController.assetMappings)" />
+			<evaluate
+				expression="assetMappingTableController.setAssetMappings(assetMappingService.fetchAssetMappings())" />
+		</transition>
 	</view-state>
 
 	<view-state id="editmapping" view="mappingform.xhtml">
@@ -41,7 +48,7 @@
 
 	<view-state id="createmapping" view="mappingform.xhtml">
 		<var name="assetMapping" class="de.fisch3r.springdemo.jsf.domain.AssetMapping" />
-		<transition on="saveAssetMapping" to="assetmapping" >
+		<transition on="saveAssetMapping" to="assetmapping">
 			<evaluate
 				expression="assetMappingTableController.assetMappings.add(assetMapping)" />
 		</transition>

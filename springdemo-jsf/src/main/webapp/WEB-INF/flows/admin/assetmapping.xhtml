@@ -7,33 +7,43 @@
 <h:body>
 
 	<h:form id="sheetForm">
+		<p:toolbar>
+			<p:toolbarGroup align="left">
+				<p:commandButton value="New" icon="ui-icon-document"
+					action="createAssetMapping" />
+
+				<p:commandButton value="Save List" icon="ui-icon-disk"
+					action="saveAssetMappings" />
+			</p:toolbarGroup>
+		</p:toolbar>
 
 		<p:panel id="sheet">
 			<p:dataTable var="assetMappingRow"
 				value="#{assetMappingTableController.assetMappings}"
 				id="assetMappings" editable="true"
-				rowKey="assetMapping.dataProviderName" >
+				rowKey="assetMapping.dataProviderName">
 
 				<f:facet name="header">
             		Asset Mappings
         		</f:facet>
 
-				<p:column headerText="Dataprovider Name" style="width:250px" >
-					<h:outputText value="#{assetMappingRow.dataProviderName}" /> 
+				<p:column headerText="Dataprovider Name" style="width:250px">
+					<h:outputText value="#{assetMappingRow.dataProviderName}" />
 				</p:column>
 
-				<p:column headerText="Decorative Name" style="width:125px" >
-					<h:outputText value="#{assetMappingRow.decorativeName}" /> 
+				<p:column headerText="Decorative Name" style="width:125px">
+					<h:outputText value="#{assetMappingRow.decorativeName}" />
 				</p:column>
 
 				<p:column headerText="Options" style="width:50px">
-					<p:commandButton icon="ui-icon-pencil" title="Edit row" id="editRow" action="editAssetMapping">
+					<p:commandButton icon="ui-icon-pencil" title="Edit row"
+						id="editRow" action="editAssetMapping">
 						<f:setPropertyActionListener
 							target="#{assetMappingTableController.selectedAssetMapping}"
 							value="#{assetMappingRow}" />
 					</p:commandButton>
-					<p:commandButton icon="ui-icon-trash" title="Delete row" update=":sheetForm" id="deleteRow"
-						action="removeAssetMapping">
+					<p:commandButton icon="ui-icon-trash" title="Delete row"
+						update=":sheetForm" id="deleteRow" action="removeAssetMapping">
 						<f:setPropertyActionListener
 							target="#{assetMappingTableController.selectedAssetMapping}"
 							value="#{assetMappingRow}" />
@@ -41,9 +51,6 @@
 				</p:column>
 
 			</p:dataTable>
-
-			<p:commandButton value="Create" id="createBtn"
-				action="createAssetMapping" />
 
 		</p:panel>
 	</h:form>
