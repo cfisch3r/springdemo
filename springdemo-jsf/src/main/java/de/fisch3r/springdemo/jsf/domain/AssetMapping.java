@@ -13,7 +13,7 @@ public class AssetMapping implements Serializable {
 	
 	@NotNull
 	@NotEmpty
-	@BusinessKey
+	@BusinessKey(caseSensitive = false)
 	private String dataProviderName;
 
 	@NotNull
