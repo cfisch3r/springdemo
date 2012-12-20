@@ -27,7 +27,7 @@ import de.fisch3r.springdemo.entity.Book;
 @Transactional
 @TransactionConfiguration(transactionManager = "txManager")
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
-public final class BookDaoIT extends AbstractTestNGSpringContextTests {
+public final class BookDaoDB extends AbstractTestNGSpringContextTests {
 
 	private static final int TOTAL_BOOKS_COUNT = 10;
 

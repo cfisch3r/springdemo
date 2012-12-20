@@ -39,22 +39,10 @@
 
 	<build>
 		<finalName>springdemo-core</finalName>
-		<plugins>
-
-			<!-- integration test -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/*DaoIT.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-
-		</plugins>
 	</build>
+
 	<description>Erster Test für eine Spring Webapp</description>
+
 	<profiles>
 		<profile>
 			<id>dbtest</id>
@@ -166,9 +154,9 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
-						<configuration combine.self="override">
+						<configuration>
 							<includes>
-								<include>**/*DaoIT.java</include>
+								<include>**/*DB.java</include>
 							</includes>
 						</configuration>
 					</plugin>
